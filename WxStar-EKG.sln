@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WxStar-EKG", "WxStar-EKG.csproj", "{D81B17C8-A86F-4270-B33D-D90954A922AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D81B17C8-A86F-4270-B33D-D90954A922AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81B17C8-A86F-4270-B33D-D90954A922AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81B17C8-A86F-4270-B33D-D90954A922AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81B17C8-A86F-4270-B33D-D90954A922AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
