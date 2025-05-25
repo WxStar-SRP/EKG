@@ -17,7 +17,7 @@ public class Program
             {
                 DateTime currentNetTime = NtpClient.GetNetworkTime();
 
-                string currentNetTimeStr = currentNetTime.ToString("MM/dd/yyyy hh:mm:ss.000 tt");
+                string currentNetTimeStr = currentNetTime.ToString("MM/dd/yyyy hh:mm:ss.fff tt");
                 await MqttPublisher.PublishCommand($"heartbeat(Time={currentNetTimeStr})", "i2m/heartbeat");
 
                 await Task.Delay(1000 * 60 * 5); // 5-minute intervals

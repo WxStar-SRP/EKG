@@ -38,7 +38,7 @@ public class NtpClient
         var time = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc))
             .AddMilliseconds((long)milliseconds);
 
-        Console.WriteLine($"NETWORK TIME: {time.ToString("MM/dd/yyyy hh:mm:ss.000 tt")}");
+        Console.WriteLine($"NETWORK TIME: {time.ToString("MM/dd/yyyy hh:mm:ss.fff tt")}");
         
         return time;
     }
