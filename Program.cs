@@ -5,6 +5,7 @@ public class Program
     static async Task Main(string[] args)
     {
         await MqttPublisher.Connect();
+        int Failures = 0;
         
         Console.WriteLine("WeatherStar EKG Daemon");
         Console.WriteLine("May your i2 not fall 2 hours behind <3");
@@ -25,6 +26,20 @@ public class Program
             {
                 Console.WriteLine("Failed to post heartbeat, trying again in 5 minutes..");
                 Console.WriteLine("Either NTP is blocked or we're being rate limited.");
+
+                Failures++;
+
+                // Try to refresh the connection to the MQTT broker
+                if (Failures > 5)
+                {
+                    Console.WriteLine("Failed 5 times over, attempting to re-establish MQTT broker connection..");
+                    await MqttPublisher.Disconnect();
+                    await MqttPublisher.Connect();
+                    Failures = 0;
+
+                    continue;
+                }
+                
                 await Task.Delay(1000 * 60 * 5);
             }
         }
