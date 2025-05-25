@@ -8,7 +8,6 @@ namespace WxStar_EKG;
 public class MqttPublisher
 {
     public static IMqttClient Client;
-    public static MqttFactory Factory;
     private static string HOST = "wxstar-data.cascadia.local";
     private static int PORT = 1883;
     private static string USERNAME = "MOON";
