@@ -32,16 +32,30 @@ public class Program
                 // Try to refresh the connection to the MQTT broker
                 if (Failures > 5)
                 {
-                    Console.WriteLine("Failed 5 times over, attempting to re-establish MQTT broker connection..");
-                    await MqttPublisher.Disconnect();
-                    await MqttPublisher.Connect();
-                    Failures = 0;
-
+                    await AttemptMqttReconnect();
                     continue;
                 }
                 
                 await Task.Delay(1000 * 60 * 5);
             }
+        }
+    }
+
+    static async Task AttemptMqttReconnect()
+    {
+        try
+        {
+            Console.WriteLine("Attempting to reconnect to MQTT broker..");
+            
+            await MqttPublisher.Disconnect();
+            await MqttPublisher.Connect();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Failed to reconnect to MQTT broker. Daemon cannot continue.");
+            Console.WriteLine(e.Message);
+            throw;
         }
     }
 }
