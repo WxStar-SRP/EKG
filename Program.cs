@@ -4,6 +4,8 @@ public class Program
 {
     static async Task Main(string[] args)
     {
+        Config config = Config.Load();
+        
         await MqttPublisher.Connect();
         int failover = 0;
         

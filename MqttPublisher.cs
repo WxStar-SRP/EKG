@@ -8,10 +8,10 @@ namespace WxStar_EKG;
 public class MqttPublisher
 {
     public static IMqttClient Client;
-    private static string HOST = "wxstar-data.cascadia.local";
-    private static int PORT = 1883;
-    private static string USERNAME = "MOON";
-    private static string PASSWORD = "intellistar";
+    private static string HOST = Config.config.MqttHost;
+    private static int PORT = Config.config.MqttPort;
+    private static string USERNAME = Config.config.MqttUser;
+    private static string PASSWORD = Config.config.MqttPass;
 
     public static async Task Connect()
     {
@@ -36,7 +36,7 @@ public class MqttPublisher
         MqttCommand mqttCommand = new MqttCommand { Command = command };
 
         var applicationMessage = new MqttApplicationMessageBuilder()
-            .WithTopic("i2m/heartbeat")
+            .WithTopic("wxstar/heartbeat")
             .WithPayload(JsonSerializer.Serialize(mqttCommand))
             .Build();
 
